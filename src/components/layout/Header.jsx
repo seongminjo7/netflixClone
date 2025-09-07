@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { SiNetflix } from "react-icons/si";
 import styled from 'styled-components';
 import Gnb from './Gnb';
+import Search from '../ui/Search';
 
 export default function Header() {
     return (
@@ -12,6 +13,9 @@ export default function Header() {
                 </Link>
             </h1>
             <Gnb />
+            <SearchWrapper>
+                <Search />
+            </SearchWrapper>
         </HeaderContainer>
     )
 }
@@ -34,4 +38,10 @@ const HeaderContainer = styled.header`
         color: #E50914 ;
         
     }
+`
+
+const SearchWrapper = styled.div`
+    margin-left: auto;
+    display: flex;
+    align-items: center;
 `
