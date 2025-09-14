@@ -17,6 +17,24 @@ const typeStyles = {
     bgGray: css`
         background-color: gray;
         color: white;
+    `,
+    circle: css`
+        width: 36px;
+        height: 36px;
+        border-radius: 100%;
+        border: none;
+        background-color: white;
+        color:#000;
+        padding: 0;
+    `,
+    circleOut: css`
+        width: 36px;
+        height: 36px;
+        border-radius: 100%;
+        border: solid 1px #fff;
+        color:#fff;
+        padding: 0;
+        background-color: transparent;
     `
 }
 

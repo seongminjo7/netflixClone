@@ -6,12 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import Header from './components/layout/Header';
 import GlobalStyle from './style/GlobalStyle';
 import Router from './router/Router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient(); // 새로운 쿼리 클라이언트를 초기화 후 생성
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <Router />
+    <QueryClientProvider client={queryClient}>
+      <GlobalStyle />
+      <Router />
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
