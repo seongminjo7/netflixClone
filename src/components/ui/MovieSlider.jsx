@@ -47,6 +47,7 @@ export default function MovieSlider({ movies, title, type, rate }) {
             }
         }
     }
+
     useEffect(() => {
         const fetchGenres = async () => {
             const genresData = await getGenre();

@@ -28,7 +28,7 @@ export default function Main() {
     */
     return (
         <>
-            <MainVideo />
+            {/* <MainVideo /> */}
             <MovieSlider
                 movies={nowPlaying?.slice(1, 11)}
                 title='TOP 10 시리즈'

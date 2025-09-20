@@ -87,4 +87,14 @@ export const getModalDetail = async (movieId) => {
     }
 }
 
+export const getSearchResults = async (keyword) => {
+    try {
+        const res = await instance.get(`search/multi?query=${keyword}`);
+        console.log(res)
+        return res.data.results
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export default instance

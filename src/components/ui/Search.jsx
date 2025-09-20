@@ -3,10 +3,12 @@ import { IoMdClose, IoMdSharp } from "react-icons/io"; // 혹시 위에랑 같�
 import styled from "styled-components";
 import { motion } from "framer-motion"
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Search() {
     const [searchOpen, setSearchOpen] = useState(false)
     const [keyword, setKeyword] = useState('');
-    const [clearBtn, setClearBtn] = useState(false)
+    const [clearBtn, setClearBtn] = useState(false);
+    const navigate = useNavigate();
 
     // useRef
     const inputRef = useRef(HTMLInputElement)
@@ -20,11 +22,26 @@ export default function Search() {
         console.log(value)
         setKeyword(value)
         setClearBtn(value.trim() !== "")
+        const keywordText = value.trim();
+
         /*
             trim()은 문자열에서 앞 뒤에 공백을 제거해주는 역할
             !== "" 공백을 다 제거했을 때 공백이 아니라면 true를 반환
             value.trim().length > 0 = 빈 문자가 아니야
         */
+
+        if (keywordText) {
+            const searchUrl = `/search?keyword=${encodeURIComponent(keywordText)}`
+            // encodeURIComponent(value) = 문자열로 바꿔주는 자바스크립트 함수
+            // 특수문자, 한글, 공백 같은 문자가 url에서 에러가 나지 않도록 퍼센트 인코딩 형식으로 변환함
+            // ex) %20%545...
+            // console.log(searchUrl)
+            navigate(searchUrl, { replace: true })
+            // replace: true 히스토리 누적 방지
+        } else {
+            // 텍스트가 비워지면 
+            navigate('/')
+        }
     }
 
     const handleClearInput = (e) => {
@@ -41,6 +58,7 @@ export default function Search() {
         setTimeout(() => {
             inputRef.current.focus()
         }, 500)
+        navigate('/')
     }
 
     useEffect(() => {
